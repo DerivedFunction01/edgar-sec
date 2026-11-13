@@ -13,45 +13,15 @@ from dataclasses import dataclass, field
 from edgar_sec.engine.tables.extraction.signature_profiles import (
     CHANNEL_WEIGHTS,
     CONTAINMENT_EDGES,
-    PROV_STEP0_LEXICON,
-    PROV_STEP1_MINED,
+    INHERITANCE_FACTORS,
+    SIGNATURE_TERMS,
     ContainmentEdge,
     SignatureTerm,
 )
-from edgar_sec.engine.tables.extraction.signature_terms_leadin import (
-    LEADIN_MINED,
-)
-from edgar_sec.engine.tables.extraction.signature_terms_lexicon import (
-    LEXICON_TERMS,
-)
-from edgar_sec.engine.tables.extraction.signature_terms_stub import (
-    STUB_MINED,
-)
-
-
-def _assemble_terms() -> tuple[SignatureTerm, ...]:
-    """Assemble the profile from its measured data modules."""
-    terms = [
-        SignatureTerm(
-            family, channel, term, weight, member, foreign, PROV_STEP0_LEXICON
-        )
-        for family, channel, term, weight, member, foreign in LEXICON_TERMS
-    ]
-    terms.extend(
-        SignatureTerm(family, "stub", term, weight, member, foreign, PROV_STEP1_MINED)
-        for family, term, weight, member, foreign in STUB_MINED
-    )
-    terms.extend(
-        SignatureTerm(family, "leadin", term, weight, member, foreign, PROV_STEP1_MINED)
-        for family, term, weight, member, foreign in LEADIN_MINED
-    )
-    return tuple(terms)
-
-
-SIGNATURE_TERMS: tuple[SignatureTerm, ...] = _assemble_terms()
 
 # Calibration constants, derivation-priced by the Step 1 harness
-# over the adjudicated corpora (record: improvement Step 1).
+# over the adjudicated corpora (record: improvement Step 1; the
+# pin iteration re-prices them against the 1B map profile).
 CLAIM_FLOOR = 5.0
 DOMINANCE_RATIO = 1.25
 FOREIGN_ALLOWANCE = 0.25
@@ -93,6 +63,18 @@ def heading_text(prose_before: str, prose_after: str, caption: str) -> str:
     return normalize(" ".join(lines))
 
 
+def lead_title_text(prose_before: str) -> str:
+    """The lead-in's title segments: its first two framing chunks."""
+    segments = []
+    for chunk in re.split(r"\s*\|\s*|\n", prose_before or ""):
+        stripped = chunk.strip()
+        if stripped:
+            segments.append(stripped)
+        if len(segments) >= 3:
+            break
+    return " ".join(segments[:2])
+
+
 @dataclass(frozen=True, slots=True)
 class GeometryText:
     """One geometry's text evidence, by channel, plus context."""
@@ -100,6 +82,7 @@ class GeometryText:
     caption: str = ""
     leadin: str = ""
     notehead: str = ""
+    lead_title: str = ""
     stubs: tuple[str, ...] = ()
     closure_closed: bool | None = None
     note_title: str | None = None
@@ -129,6 +112,7 @@ def geometry_text_from_table(table) -> GeometryText:
         notehead=heading_text(
             context.prose_before or "", context.prose_after or "", caption
         ),
+        lead_title=lead_title_text(context.prose_before or ""),
         stubs=stubs,
         note_title=note.title if note else None,
         section_item=section.item if section else None,
@@ -179,6 +163,7 @@ def score_geometry(
         "caption": normalize(geometry.caption),
         "leadin": normalize(geometry.leadin),
         "notehead": normalize(geometry.notehead),
+        "lead_title": normalize(geometry.lead_title),
         "stub": geometry.stub_text,
     }
     by_family: dict[str, dict[str, float]] = {}
@@ -327,7 +312,8 @@ def compete_filing(
                 if not same_home:
                     continue
                 for family in prior_result.claims:
-                    inherited = INHERITANCE_FACTOR * prior_result.scores[family].total
+                    factor = INHERITANCE_FACTORS.get(family, INHERITANCE_FACTOR)
+                    inherited = factor * prior_result.scores[family].total
                     bonus[family] = max(bonus.get(family, 0.0), inherited)
                 break
         if geometry.note_title:

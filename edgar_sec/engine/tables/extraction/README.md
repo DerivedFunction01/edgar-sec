@@ -57,7 +57,8 @@ classified tables into logical statements and arbitrates their relations.
   filing position, section membership, and the forms layer's signature
   classifier unless a builder stamps one on the context.
 - **Signature competition is scored claiming over measured profiles**:
-  each family's signature terms live once, as data, in
+  each family's signature terms live once, as data, in the
+  subject-evidence map (`subject_evidence`), assembled by
   `signature_profiles` with per-term discriminativeness measured over
   the adjudicated corpora; a claim issues only when the family's own
   profile dominates the geometry's text and the foreign profile mass

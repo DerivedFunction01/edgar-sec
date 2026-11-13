@@ -1,29 +1,25 @@
-"""Signature profile types and shared competition constants.
+"""Signature profile types, assembled from the subject-evidence map.
 
-The measured terms live in the signature_terms_* data modules
-beside this one (Step 1 measurement over the Step 11C adjudicated
-corpora); weights are smoothed log odds ratios of member vs
-foreign-member channel presence.
+The profile data is the Step 1B subject-evidence map (the shared
+contract): its measured terms, containment edges, channel weights,
+and header/title inheritance pricing, assembled here into the
+competition layer's scoring shapes. Weights are smoothed log odds
+ratios of member vs foreign-member channel presence, with foreign
+support joined across families on term and channel from the map.
 """
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
-PROV_STEP1_MEASUREMENT = "improvement-step1:measurement-2026-11-13"
-PROV_STEP0_LEXICON = "improvement-step0:brief-lexicon"
-PROV_STEP1_MINED = "improvement-step1:mined-ngrams"
+from edgar_sec.engine.tables.extraction.subject_evidence import load_map
 
-CHANNELS = ("caption", "leadin", "notehead", "stub")
+PROV_STEP1B_MAP = "improvement-step1b:subject-evidence-map-v1"
 
-# Channel weights priced from Step 0's channel outcomes (correct /
-# (correct + wrong), pooled B+D, normalized to lead-in = 1.0).
-CHANNEL_WEIGHTS: dict[str, float] = {
-    "caption": 1.10,
-    "leadin": 1.00,
-    "notehead": 0.86,
-    "stub": 0.93,
-}
+CHANNELS = ("caption", "leadin", "notehead", "lead_title", "stub")
+_MAP_CHANNEL = {"note_heading": "notehead"}
+DEFAULT_INHERITANCE_FACTOR = 0.5
 
 
 @dataclass(frozen=True, slots=True)
@@ -36,7 +32,7 @@ class SignatureTerm:
     weight: float
     member_hits: int
     foreign_hits: int
-    provenance: str = PROV_STEP1_MEASUREMENT
+    provenance: str = PROV_STEP1B_MAP
 
 
 @dataclass(frozen=True, slots=True)
@@ -47,36 +43,66 @@ class ContainmentEdge:
     parent: str
     discount: float
     support: str
-    provenance: str = PROV_STEP1_MEASUREMENT
+    provenance: str = PROV_STEP1B_MAP
 
 
-# Edges measured before Step 1: the registry containment census
-# (aoci sections inside equity statements, lift 66x), the verdict's
-# combined-presentation split groups (CI inside income grids), and
-# the registry co-note census (deferred_tax x tax_reconciliation).
-CONTAINMENT_EDGES: tuple[ContainmentEdge, ...] = (
-    ContainmentEdge(
-        "aoci_rollforward", "equity_statement", 0.75, "census lift 66x, 4 of 9 parents"
-    ),
-    ContainmentEdge(
-        "equity_statement", "aoci_rollforward", 0.50, "parent headings in rollforwards"
-    ),
-    ContainmentEdge(
-        "comprehensive_income",
-        "income_statement",
-        0.50,
-        "combined-presentation split groups",
-    ),
-    ContainmentEdge(
-        "income_statement",
-        "comprehensive_income",
-        0.50,
-        "combined-presentation split groups",
-    ),
-    ContainmentEdge(
-        "deferred_tax", "tax_reconciliation", 0.50, "co-note colocation 0.50 / 0.857"
-    ),
-    ContainmentEdge(
-        "tax_reconciliation", "deferred_tax", 0.50, "co-note colocation 0.50 / 0.857"
-    ),
-)
+def _channel(name: str) -> str:
+    return _MAP_CHANNEL.get(name, name)
+
+
+def _weight(support: int, members: int, foreign: int, foreign_members: int) -> float:
+    """Smoothed log odds of channel presence, member vs foreign."""
+    p_in = (support + 1.0) / (members + 2.0)
+    p_out = (foreign + 1.0) / (foreign_members + 2.0)
+    return round(min(max(math.log(p_in / p_out), 0.0), 3.0), 3)
+
+
+def _assemble() -> tuple[tuple[SignatureTerm, ...], tuple[ContainmentEdge, ...]]:
+    """Assemble terms and edges from the map, the profile's only source."""
+    evidence = load_map()
+    members = evidence.labelled_members
+    total_members = sum(members.values())
+    by_term: dict[tuple[str, str], int] = {}
+    for spec in evidence.terms:
+        key = (_channel(spec.channel), spec.term)
+        by_term[key] = by_term.get(key, 0) + spec.support
+    terms = []
+    for spec in evidence.terms:
+        channel = _channel(spec.channel)
+        foreign = by_term[(channel, spec.term)] - spec.support
+        terms.append(
+            SignatureTerm(
+                spec.family,
+                channel,
+                spec.term,
+                _weight(
+                    spec.support,
+                    members[spec.family],
+                    foreign,
+                    total_members - members[spec.family],
+                ),
+                spec.support,
+                foreign,
+            )
+        )
+    edges = tuple(
+        ContainmentEdge(
+            edge.family,
+            edge.other_family,
+            edge.share,
+            f"{edge.kind} support {edge.support} ({edge.basis})",
+        )
+        for edge in evidence.containment_edges
+    )
+    return tuple(terms), edges
+
+
+SIGNATURE_TERMS, CONTAINMENT_EDGES = _assemble()
+
+CHANNEL_WEIGHTS: dict[str, float] = {
+    _channel(spec.channel): spec.weight for spec in load_map().channels
+}
+
+INHERITANCE_FACTORS: dict[str, float] = {
+    row.family: row.title_decides_share for row in load_map().inheritance
+}
