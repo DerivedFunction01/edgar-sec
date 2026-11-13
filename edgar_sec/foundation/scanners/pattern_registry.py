@@ -15,7 +15,6 @@ from .lines import finding, is_noise, scan_text_rule
 
 # The registry: pattern name -> the one module path allowed to define it.
 PATTERN_HOMES: dict[str, str] = {
-    "is_separator_line": "edgar_sec/foundation/text/patterns.py",
     "WORD_TOKEN_RE": "edgar_sec/foundation/text/words.py",
     "RE_FULL_DATE": "edgar_sec/foundation/text/dates.py",
     "YEAR_TOKEN_PATTERN": "edgar_sec/foundation/text/dates.py",
