@@ -32,7 +32,9 @@ from edgar_sec.engine.tables.extraction.signature_terms_stub import (
 def _assemble_terms() -> tuple[SignatureTerm, ...]:
     """Assemble the profile from its measured data modules."""
     terms = [
-        SignatureTerm(family, channel, term, weight, member, foreign, PROV_STEP0_LEXICON)
+        SignatureTerm(
+            family, channel, term, weight, member, foreign, PROV_STEP0_LEXICON
+        )
         for family, channel, term, weight, member, foreign in LEXICON_TERMS
     ]
     terms.extend(
